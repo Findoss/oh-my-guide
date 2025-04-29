@@ -1,6 +1,12 @@
 import { fields, mouth, url } from './config';
 
-import type { FieldsData, FormValues, GridMouth, StateMouth } from './types';
+import type {
+  FieldsData,
+  FormValues,
+  GridMouth,
+  IdTooth,
+  StateMouth,
+} from './types';
 
 const formatEmail = (
   fields: FieldsData,
@@ -16,13 +22,15 @@ const formatEmail = (
 
       row.forEach((tooths, toothsIndex) => {
         tooths.forEach((tooth) => {
-          const idTooth = `${rowIndex + rowIndex + toothsIndex + 1}.${tooth}`;
+          const idTooth: IdTooth = `${
+            rowIndex + rowIndex + toothsIndex + 1
+          }.${tooth}`;
           //
 
           text.push(`<td style=" padding: '5px', padding-bottom: '15px' ">`);
 
           text.push(`<div>`);
-          text.push(Boolean(stateMouth[idTooth].top) ? '🟦' : '⬜');
+          text.push(stateMouth[idTooth].top ? '🟦' : '⬜');
           text.push(`</div>`);
 
           text.push(`<div>`);
@@ -30,7 +38,7 @@ const formatEmail = (
           text.push(`</div>`);
 
           text.push(`<div>`);
-          text.push(Boolean(stateMouth[idTooth].bottom) ? '🔽' : '⬜');
+          text.push(stateMouth[idTooth].bottom ? '🔽' : '⬜');
           text.push(`</div>`);
 
           text.push(`</td>`);
@@ -69,7 +77,10 @@ const formatEmail = (
   </tr>
   <tr>
       <td>${fields.communicationApp.title}</td>
-      <td>${fields.communicationApp.options[rawData.communicationApp]}</td>
+      <td>${
+        fields.communicationApp.options &&
+        fields.communicationApp.options[rawData.communicationApp]
+      }</td>
   </tr>
   <tr>
       <td>${fields.patientName.title}</td>
@@ -81,7 +92,10 @@ const formatEmail = (
   </tr>
   <tr>
       <td>${fields.kindOfWork.title}</td>
-      <td>${fields.kindOfWork.options[rawData.kindOfWork]}</td>
+      <td>${
+        fields.kindOfWork.options &&
+        fields.kindOfWork.options[rawData.kindOfWork]
+      }</td>
   </tr>
   <tr>
       <td>${fields.teethToggle.title}</td>
@@ -89,11 +103,17 @@ const formatEmail = (
   </tr>
   <tr>
       <td>${fields.toothColor.title}</td>
-      <td>${fields.toothColor.options[rawData.toothColor]}</td>
+      <td>${
+        fields.toothColor.options &&
+        fields.toothColor.options[rawData.toothColor]
+      }</td>
   </tr>
   <tr>
       <td>${fields.prosthesisType.title}</td>
-      <td>${fields.prosthesisType.options[rawData.prosthesisType]}</td>
+      <td>${
+        fields.prosthesisType.options &&
+        fields.prosthesisType.options[rawData.prosthesisType]
+      }</td>
   </tr>
   <tr>
       <td>${fields.implantSystem.title}</td>
@@ -101,7 +121,10 @@ const formatEmail = (
   </tr>
   <tr>
       <td>${fields.implantProtocol.title}</td>
-      <td>${fields.implantProtocol.options[rawData.implantProtocol]}</td>
+      <td>${
+        fields.implantProtocol.options &&
+        fields.implantProtocol.options[rawData.implantProtocol]
+      }</td>
   </tr>
   <tr>
       <td>${fields.surgicalKit.title}</td>
@@ -121,11 +144,17 @@ const formatEmail = (
   </tr>
   <tr>
       <td>${fields.implantGuides.title}</td>
-      <td>${fields.implantGuides.options[rawData.implantGuides]}</td>
+      <td>${
+        fields.implantGuides.options &&
+        fields.implantGuides.options[rawData.implantGuides]
+      }</td>
   </tr>
   <tr>
       <td>${fields.sourceFiles.title}</td>
-      <td>${fields.sourceFiles.options[rawData.sourceFiles]}</td>
+      <td>${
+        fields.sourceFiles.options &&
+        fields.sourceFiles.options[rawData.sourceFiles]
+      }</td>
   </tr>
   <tr>
       <td>${fields.comment.title}</td>

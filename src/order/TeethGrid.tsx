@@ -9,7 +9,7 @@ const Tooth = ({
   isShowTop = true,
 }: {
   tooth: IdTooth;
-  onClick: any;
+  onClick: (idTooth: IdTooth, position: Position) => void;
   selected: Record<Position, boolean>;
   isShowBottom: boolean;
   isShowTop: boolean;
@@ -84,7 +84,7 @@ export const TeethGrid = ({
   isShowTop: boolean;
 
   value: StateMouth;
-  onChange: any;
+  onChange: (data: StateMouth) => void;
 }) => {
   const toggleTooth = (id: IdTooth, position: Position) => {
     const preValue = value[id];

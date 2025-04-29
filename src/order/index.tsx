@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Text, Select, DatePicker, Checkbox, TextArea } from './Inputs';
+import { TeethGrid } from './TeethGrid';
+
 import {
   defaultValueFields,
   email,
@@ -20,14 +23,15 @@ import {
   title,
   validationSchema,
 } from './config';
-import { TeethGrid } from './TeethGrid';
 import { sendForm } from './send';
+
 import type { FormValues } from './types';
 
 export const OrderForm = () => {
   const { control, handleSubmit, watch, resetField } = useForm<FormValues>({
     mode: 'onTouched',
     defaultValues: defaultValueFields,
+    // @ts-expect-error
     resolver: yupResolver(validationSchema),
   });
 
@@ -40,27 +44,27 @@ export const OrderForm = () => {
     restListFieldsKindOfWork.map((field) => {
       resetField(field);
     });
-  }, [kindOfWork]);
+  }, [kindOfWork, resetField]);
 
   useEffect(() => {
     restListFieldsSourceFiles.map((field) => {
       resetField(field);
     });
-  }, [sourceFiles]);
+  }, [resetField, sourceFiles]);
 
   useEffect(() => {
     restListFieldsSurgkitRentalToggle.map((field) => {
       resetField(field);
     });
-  }, [surgkitRentalToggle]);
+  }, [resetField, surgkitRentalToggle]);
 
   useEffect(() => {
     restListFieldsTeethToggle.map((field) => {
       resetField(field);
     });
-  }, [teethToggle]);
+  }, [resetField, teethToggle]);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormValues) => {
     console.log(data);
     sendForm(data);
   };
@@ -77,6 +81,7 @@ export const OrderForm = () => {
 
       <div className="w-full mx-auto max-w-screen-xl p-4 flex justify-center">
         <form
+          // @ts-expect-error
           onSubmit={handleSubmit(onSubmit)}
           className="w-full max-w-[800px]"
         >
@@ -133,6 +138,7 @@ export const OrderForm = () => {
                   control={control}
                   defaultValue={initStateMouth}
                   render={({ field }) => (
+                    // @ts-expect-error
                     <TeethGrid
                       gridMouth={mouth}
                       isShowBottom={true}

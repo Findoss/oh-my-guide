@@ -296,7 +296,7 @@ export const validationSchema = object().shape({
   toothColor: string().when(
     [fields.teethToggle.name],
     ([teethToggle], schema) => {
-      if (Boolean(teethToggle)) {
+      if (teethToggle) {
         return schema.required(`${fields.toothColor.title} обязательное поле`);
       }
       return schema;
@@ -305,7 +305,7 @@ export const validationSchema = object().shape({
   prosthesisType: string().when(
     [fields.teethToggle.name],
     ([teethToggle], schema) => {
-      if (Boolean(teethToggle)) {
+      if (teethToggle) {
         return schema.required(
           `${fields.prosthesisType.title} обязательное поле`
         );
@@ -354,7 +354,7 @@ export const validationSchema = object().shape({
   implantGuides: string().when(
     [fields.surgkitRentalToggle.name],
     ([surgkitRentalToggle], schema) => {
-      if (Boolean(surgkitRentalToggle)) {
+      if (surgkitRentalToggle) {
         return schema.required(
           `${fields.implantGuides.title} обязательное поле`
         );
