@@ -1,13 +1,12 @@
 {
-  "name": "my-react-router-app",
+  "name": "oh-my-guide",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "react-router build && mv ./build/client/* ./docs",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc",
-    "postinstall": "flowbite-react patch"
+    "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
