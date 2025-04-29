@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+.svg {
+  cursor: pointer;
+}
+
+td {
+  border: 1px solid black;
+}
