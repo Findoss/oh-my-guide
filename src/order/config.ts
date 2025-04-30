@@ -7,14 +7,16 @@ import type {
   StateMouth,
 } from './types';
 
+const IS_PROD = window.location.hostname !== 'localhost';
+
 export const headTitle = 'Oh my GUIDE';
 export const title = 'Заказ-наряд';
 export const subtitle = 'Навигационный хирургический шаблон';
 export const submitTitle = 'Отправить';
-export const email = 'dstit@yandex.ru';
-export const url =
-  'https://gistoyidosk.beget.app/webhook-test/9d922671-0964-46e1-a7ab-45bf470cfb0b'; // test
-//'https://gistoyidosk.beget.app/webhook/9d922671-0964-46e1-a7ab-45bf470cfb0b';
+export const email = IS_PROD ? 'dstit@yandex.ru' : 'findoss@yandex.ru';
+export const url = IS_PROD
+  ? 'https://gistoyidosk.beget.app/webhook/9d922671-0964-46e1-a7ab-45bf470cfb0b'
+  : 'https://gistoyidosk.beget.app/webhook-test/9d922671-0964-46e1-a7ab-45bf470cfb0b';
 
 export const parts = {
   1: 'Общая информация',
@@ -102,8 +104,8 @@ export const fields: FieldsData = {
       '0': 'Хирургический шаблон',
       '1': 'Временная коронка',
       '2': 'Цифровой ваксап',
-      '3': 'Армирование немедленной нагрузки до 4х опор',
-      '4': 'Армирование до 6ти опор',
+      // '3': 'Армирование немедленной нагрузки до 4х опор', // отключил по запросу заказчика
+      // '4': 'Армирование до 6ти опор', // отключил по запросу заказчика
       '5': '3Д печать хирургического шаблона',
       '6': 'Рентгеноконтраст ный шаблон для КТ',
       '7': 'Прикусной шаблон на жестком базисе',
@@ -143,7 +145,6 @@ export const fields: FieldsData = {
   surgkitRentalToggle: {
     name: 'surgkitRentalToggle',
     title: 'Аренда хирургического набора',
-    hint: 'Мы предоставляем в аренду универсальный хирургический набор',
   },
   implantGuides: {
     name: 'implantGuides',
@@ -227,7 +228,7 @@ export const defaultValueFields: FormValues = {
   implantGuides: '',
   sourceFiles: '0',
   comment: '',
-  sourceFilesLink: email,
+  sourceFilesLink: '',
   toothColor: '',
   prosthesisType: '',
   reinforcementToggle: false,

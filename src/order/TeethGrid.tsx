@@ -27,7 +27,7 @@ const Tooth = ({
           width="42.244"
           height="41.013"
           xmlns="http://www.w3.org/2000/svg"
-          fill={selected.top ? 'blue' : 'grey'}
+          fill={selected.top ? 'green' : 'grey'}
           className={`svg`}
         >
           <path
@@ -46,7 +46,7 @@ const Tooth = ({
           width="27.399"
           height="29.622"
           xmlns="http://www.w3.org/2000/svg"
-          fill={selected.bottom ? 'blue' : 'grey'}
+          fill={selected.bottom ? 'green' : 'grey'}
           className="svg"
         >
           <path
