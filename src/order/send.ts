@@ -177,7 +177,7 @@ const formatEmail = (
 };
 
 export const sendForm = (rawData: FormValues) => {
-  fetch(url, {
+  return fetch(url, {
     method: 'POST',
     body: formatEmail(fields, mouth, rawData),
   });

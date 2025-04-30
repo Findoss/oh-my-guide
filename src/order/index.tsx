@@ -20,6 +20,8 @@ import {
   restListFieldsTeethToggle,
   submitTitle,
   subtitle,
+  textError,
+  textSuccess,
   title,
   validationSchema,
 } from './config';
@@ -42,6 +44,7 @@ export const OrderForm = () => {
     useState(false);
   const [showModalTermsOfService, toggleModalModalTermsOfService] =
     useState(false);
+  const [textSendForm, setTextSendForm] = useState('');
 
   const kindOfWork = watch(fields.kindOfWork.name);
   const teethToggle = watch(fields.teethToggle.name);
@@ -80,12 +83,26 @@ export const OrderForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
-    sendForm(data);
+    sendForm(data)
+      .then((data) => {
+        if (data.status === 200) {
+          setTextSendForm(textSuccess);
+          onChangeModalSuccess();
+        }
+      })
+      .catch((error) => {
+        setTextSendForm(`${textError} - ${error}`);
+        onChangeModalSuccess();
+      });
   };
 
   return (
     <>
-      <ModalSuccess isShow={showModalSuccess} onChange={onChangeModalSuccess} />
+      <ModalSuccess
+        text={textSendForm}
+        isShow={showModalSuccess}
+        onChange={onChangeModalSuccess}
+      />
       <ModalImplantNavigator
         isShow={showModalImplantNavigator}
         onChange={onChangeModalImplantNavigator}

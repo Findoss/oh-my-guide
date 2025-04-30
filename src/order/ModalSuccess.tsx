@@ -1,7 +1,9 @@
 export const ModalSuccess = ({
+  text,
   isShow,
   onChange,
 }: {
+  text: string;
   isShow: boolean;
   onChange: () => void;
 }) => (
@@ -37,7 +39,7 @@ export const ModalSuccess = ({
           <span className="sr-only">Закрыть</span>
         </button>
         <div className="p-4 md:p-10 text-center">
-          <h3 className="mb-5 text-lg font-normal">Форма успешно отправлена</h3>
+          <h3 className="mb-5 text-lg font-normal">{text}</h3>
           <button
             data-modal-hide="popup-modal"
             type="button"
