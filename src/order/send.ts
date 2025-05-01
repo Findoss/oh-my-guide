@@ -25,7 +25,7 @@ const formatEmail = (
           const idTooth: IdTooth = `${
             rowIndex + rowIndex + toothsIndex + 1
           }.${tooth}`;
-          text.push(`<td style="padding: 5px;">
+          text.push(`<td style="padding: 5px;"">
             <div>
               ${stateMouth[idTooth].top ? '🟩' : '⬜'}
             </div>
@@ -53,100 +53,104 @@ const formatEmail = (
     rawData: FormValues
   ) => `
   <table border="1" cellspacing="0" cellpadding="0">
-  <tr border="1">
-    <td border="0">${fields.organization.title}</td>
-    <td border="0">${rawData.organization}</td>
+  <tr>
+    <td style="padding: 5px;">${fields.organization.title}</td>
+    <td style="padding: 5px;">${rawData.organization}</td>
   </tr>
-  <tr border="1">
-    <td>${fields.customerName.title}</td>
-    <td>${rawData.customerName}</td>
+  <tr>
+    <td style="padding: 5px;">${fields.customerName.title}</td>
+    <td style="padding: 5px;">${rawData.customerName}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.phone.title}</td>
-      <td>${rawData.phone}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.phone.title}</td>
+      <td style="padding: 5px;">${rawData.phone}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.actualAddressDelivery.title}</td>
-      <td>${rawData.actualAddressDelivery}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.actualAddressDelivery.title}</td>
+      <td style="padding: 5px;">${rawData.actualAddressDelivery}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.communicationApp.title}</td>
-      <td>${
+  <tr>
+      <td style="padding: 5px;">${fields.communicationApp.title}</td>
+      <td style="padding: 5px;">${
         fields.communicationApp.options &&
         fields.communicationApp.options[rawData.communicationApp]
       }</td>
   </tr>
-  <tr border="1">
-      <td>${fields.patientName.title}</td>
-      <td>${rawData.patientName}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.patientName.title}</td>
+      <td style="padding: 5px;">${rawData.patientName}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.operationDate.title}</td>
-      <td>${rawData.operationDate}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.operationDate.title}</td>
+      <td style="padding: 5px;">${rawData.operationDate}</td>
   </tr>
-  <tr border="1">
-    <td>${fields.kindOfWork.title}</td>
-    <td>${
+  <tr>
+    <td style="padding: 5px;">${fields.kindOfWork.title}</td>
+    <td style="padding: 5px;">${
       fields.kindOfWork.options && fields.kindOfWork.options[rawData.kindOfWork]
     }</td>
   </tr>
   ${
     rawData.kindOfWork === '0' /* Хирургический набор */
-      ? `<tr border="1">
-      <td>${fields.teethToggle.title}</td>
-      <td>${rawData.teethToggle ? 'Да' : 'Нет'}</td>
+      ? `<tr>
+      <td style="padding: 5px;">${fields.teethToggle.title}</td>
+      <td style="padding: 5px;">${rawData.teethToggle ? 'Да' : 'Нет'}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.toothColor.title}</td>
-      <td>${
+  <tr>
+      <td style="padding: 5px;">${fields.toothColor.title}</td>
+      <td style="padding: 5px;">${
         fields.toothColor.options &&
         fields.toothColor.options[rawData.toothColor]
       }</td>
   </tr>
-  <tr border="1">
-      <td>${fields.prosthesisType.title}</td>
-      <td>${
+  <tr>
+      <td style="padding: 5px;">${fields.prosthesisType.title}</td>
+      <td style="padding: 5px;">${
         fields.prosthesisType.options &&
         fields.prosthesisType.options[rawData.prosthesisType]
       }</td>
   </tr>
-  <tr border="1">
-      <td>${fields.reinforcementToggle.title}</td>
-      <td>${rawData.reinforcementToggle ? 'Да' : 'Нет'}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.reinforcementToggle.title}</td>
+      <td style="padding: 5px;">${
+        rawData.reinforcementToggle ? 'Да' : 'Нет'
+      }</td>
   </tr>
-  <tr border="1">
-      <td>${fields.implantSystem.title}</td>
-      <td>${rawData.implantSystem}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.implantSystem.title}</td>
+      <td style="padding: 5px;">${rawData.implantSystem}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.implantProtocol.title}</td>
-      <td>${
+  <tr>
+      <td style="padding: 5px;">${fields.implantProtocol.title}</td>
+      <td style="padding: 5px;">${
         fields.implantProtocol.options &&
         fields.implantProtocol.options[rawData.implantProtocol]
       }</td>
   </tr>
-  <tr border="1">
-      <td>${fields.surgicalKit.title}</td>
-      <td>${rawData.surgicalKit}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.surgicalKit.title}</td>
+      <td style="padding: 5px;">${rawData.surgicalKit}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.pinSystem.title}</td>
-      <td>${rawData.pinSystem}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.pinSystem.title}</td>
+      <td style="padding: 5px;">${rawData.pinSystem}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.sleeveToggle.title}</td>
-      <td>${rawData.sleeveToggle ? 'Да' : 'Нет'}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.sleeveToggle.title}</td>
+      <td style="padding: 5px;">${rawData.sleeveToggle ? 'Да' : 'Нет'}</td>
   </tr>
-  <tr border="1">
-      <td>${fields.surgkitRentalToggle.title}</td>
-      <td>${rawData.surgkitRentalToggle ? 'Да' : 'Нет'}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.surgkitRentalToggle.title}</td>
+      <td style="padding: 5px;">${
+        rawData.surgkitRentalToggle ? 'Да' : 'Нет'
+      }</td>
   </tr>
   ${
     rawData.surgkitRentalToggle
       ? `
-    <tr border="1">
-      <td>${fields.implantGuides.title}</td>
-      <td>${
+    <tr>
+      <td style="padding: 5px;">${fields.implantGuides.title}</td>
+      <td style="padding: 5px;">${
         fields.implantGuides.options &&
         fields.implantGuides.options[rawData.implantGuides]
       }</td>
@@ -154,24 +158,24 @@ const formatEmail = (
   `
       : ''
   }
-  <tr border="1">
-      <td>${fields.sourceFiles.title}</td>
-      <td>${
+  <tr>
+      <td style="padding: 5px;">${fields.sourceFiles.title}</td>
+      <td style="padding: 5px;">${
         fields.sourceFiles.options &&
         fields.sourceFiles.options[rawData.sourceFiles]
       }</td>
   </tr>
-  <tr border="1">
-      <td>${fields.sourceFilesLink.title}</td>
-      <td>${rawData.sourceFilesLink}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.sourceFilesLink.title}</td>
+      <td style="padding: 5px;">${rawData.sourceFilesLink}</td>
   </tr>`
       : ''
   }
-  <tr border="1">
-      <td>${fields.comment.title}</td>
-      <td>${rawData.comment}</td>
+  <tr>
+      <td style="padding: 5px;">${fields.comment.title}</td>
+      <td style="padding: 5px;">${rawData.comment}</td>
   </tr>
-  <tr border="1" >
+  <tr >
       <td colspan="2">
           ${
             rawData.kindOfWork === '0' /* Хирургический набор */
