@@ -1,4 +1,4 @@
-import { headTitle } from './config';
+import { headTitle } from '../config';
 
 export const Logo = () => (
   <div className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">

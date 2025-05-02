@@ -1,4 +1,4 @@
-import { fields, mouth, url } from './config';
+import { fields, mouth, url } from '../config';
 
 import type {
   FieldsData,

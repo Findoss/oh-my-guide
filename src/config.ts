@@ -5,7 +5,7 @@ import type {
   GridMouth,
   IdTooth,
   StateMouth,
-} from './types';
+} from './order/types';
 
 const IS_PROD = window.location.hostname !== 'localhost';
 

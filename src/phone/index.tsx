@@ -1,4 +1,4 @@
-import { headPhone, linkPhone } from './config';
+import { headPhone, linkPhone } from '../config';
 
 export const Phone = () => (
   <a

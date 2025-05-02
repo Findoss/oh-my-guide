@@ -5,6 +5,6 @@
   cursor: pointer;
 }
 
-td {
-  border: 1px solid black;
+#root {
+  height: 100vh;
 }

@@ -1,5 +1,5 @@
 import { useController, type UseControllerProps } from 'react-hook-form';
-import { fields } from './config';
+import { fields } from '../config';
 import type { FormValues } from './types';
 
 export const Text = (props: UseControllerProps<any>) => {
