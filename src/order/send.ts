@@ -98,7 +98,9 @@ const formatEmail = (
       <td style="padding: 5px;">${fields.teethToggle.title}</td>
       <td style="padding: 5px;">${rawData.teethToggle ? 'Да' : 'Нет'}</td>
   </tr>
-  <tr>
+  ${
+    rawData.teethToggle /* Коронки */
+      ? `<tr>
       <td style="padding: 5px;">${fields.toothColor.title}</td>
       <td style="padding: 5px;">${
         fields.toothColor.options &&
@@ -118,6 +120,9 @@ const formatEmail = (
         rawData.reinforcementToggle ? 'Да' : 'Нет'
       }</td>
   </tr>
+  `
+      : ''
+  }
   <tr>
       <td style="padding: 5px;">${fields.implantSystem.title}</td>
       <td style="padding: 5px;">${rawData.implantSystem}</td>

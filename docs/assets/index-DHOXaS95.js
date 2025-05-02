@@ -97,7 +97,7 @@ attempted value: ${m}
       <td style="padding: 5px;">${h.teethToggle.title}</td>
       <td style="padding: 5px;">${b.teethToggle?"Да":"Нет"}</td>
   </tr>
-  <tr>
+  ${b.teethToggle?`<tr>
       <td style="padding: 5px;">${h.toothColor.title}</td>
       <td style="padding: 5px;">${h.toothColor.options&&h.toothColor.options[b.toothColor]}</td>
   </tr>
@@ -109,6 +109,7 @@ attempted value: ${m}
       <td style="padding: 5px;">${h.reinforcementToggle.title}</td>
       <td style="padding: 5px;">${b.reinforcementToggle?"Да":"Нет"}</td>
   </tr>
+  `:""}
   <tr>
       <td style="padding: 5px;">${h.implantSystem.title}</td>
       <td style="padding: 5px;">${b.implantSystem}</td>
