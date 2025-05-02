@@ -4,7 +4,7 @@ import { Footer } from '../footer/index';
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col items-center h-full">
       <Header />
       <OrderForm />
       <Footer />
