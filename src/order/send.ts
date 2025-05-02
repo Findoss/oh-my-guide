@@ -82,7 +82,9 @@ const formatEmail = (
   </tr>
   <tr>
       <td style="padding: 5px;">${fields.operationDate.title}</td>
-      <td style="padding: 5px;">${rawData.operationDate}</td>
+      <td style="padding: 5px;">${new Intl.DateTimeFormat('ru-RU').format(
+        new Date(rawData.operationDate)
+      )}</td>
   </tr>
   <tr>
     <td style="padding: 5px;">${fields.kindOfWork.title}</td>

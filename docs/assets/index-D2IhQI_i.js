@@ -87,7 +87,7 @@ attempted value: ${m}
   </tr>
   <tr>
       <td style="padding: 5px;">${h.operationDate.title}</td>
-      <td style="padding: 5px;">${b.operationDate}</td>
+      <td style="padding: 5px;">${new Intl.DateTimeFormat("ru-RU").format(new Date(b.operationDate))}</td>
   </tr>
   <tr>
     <td style="padding: 5px;">${h.kindOfWork.title}</td>
