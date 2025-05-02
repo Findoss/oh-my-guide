@@ -10,6 +10,8 @@ import type {
 const IS_PROD = window.location.hostname !== 'localhost';
 
 export const headTitle = 'Oh my GUIDE';
+export const headPhone = '8 (928) 846-37-68';
+export const linkPhone = '89288463768';
 export const title = 'Заказ-наряд';
 export const subtitle = 'Навигационный хирургический шаблон';
 export const submitTitle = 'Отправить';

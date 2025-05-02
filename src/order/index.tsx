@@ -5,6 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Text, Select, DatePicker, Checkbox, TextArea } from './Inputs';
 import { TeethGrid } from './TeethGrid';
+import { ModalSuccess } from './ModalSuccess';
+import { ModalImplantNavigator } from './ModalImplantNavigator';
+import { ModalTermsOfService } from './ModalTermsOfService';
+import { Logo } from './Logo';
+import { Phone } from './Phone';
 
 import {
   defaultValueFields,
@@ -28,9 +33,6 @@ import {
 import { sendForm } from './send';
 
 import type { FormValues } from './types';
-import { ModalSuccess } from './ModalSuccess';
-import { ModalImplantNavigator } from './ModalImplantNavigator';
-import { ModalTermsOfService } from './ModalTermsOfService';
 
 export const OrderForm = () => {
   const { control, handleSubmit, watch, resetField } = useForm<FormValues>({
@@ -111,12 +113,16 @@ export const OrderForm = () => {
         isShow={showModalTermsOfService}
         onChange={onChangeModalTermsOfService}
       />
-      <header className="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800">
-        <div className="w-full mx-auto p-4 md:flex md:items-center md:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            {headTitle}
-          </span>
+      <header className="w-full max-w-screen-xl mx-auto p-4 md:py-4">
+        <div className="flex items-center justify-between">
+          <Logo />
+          <ul className="flex flex-wrap items-center mb-4 text-m font-medium text-gray-500 dark:text-gray-400">
+            <li>
+              <Phone />
+            </li>
+          </ul>
         </div>
+        <hr className="my-2 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
       </header>
 
       <div className="w-full mx-auto max-w-screen-xl p-4 flex justify-center">
@@ -282,9 +288,19 @@ export const OrderForm = () => {
         </form>
       </div>
 
-      <footer className="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800">
-        <div className="w-full mx-auto p-4 md:flex md:items-center md:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+      <footer className="w-full p-4">
+        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div className="flex items-center justify-between">
+            <Logo />
+            <ul className="flex flex-wrap items-center mb-4 text-m font-medium text-gray-500 dark:text-gray-400">
+              <li>
+                <Phone />
+              </li>
+            </ul>
+          </div>
+          <hr className="my-2 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
+
+          <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
             {headTitle} © {new window.Date().getFullYear()}
           </span>
         </div>
