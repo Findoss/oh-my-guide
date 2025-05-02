@@ -19,7 +19,7 @@ export const submitTitle = 'Отправить';
 export const textSuccess = 'Форма успешно отправлена';
 export const textError = 'Ошибка';
 
-export const email = IS_PROD ? 'dstit@yandex.ru' : 'findoss@yandex.ru';
+export const email = IS_PROD ? 'oh.myguide@yandex.ru' : 'findoss@yandex.ru';
 export const url = IS_PROD
   ? 'https://gistoyidosk.beget.app/webhook/9d922671-0964-46e1-a7ab-45bf470cfb0b'
   : 'https://gistoyidosk.beget.app/webhook-test/9d922671-0964-46e1-a7ab-45bf470cfb0b';
