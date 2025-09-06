@@ -22,9 +22,14 @@ const formatEmail = (
 
       row.forEach((tooths, toothsIndex) => {
         tooths.forEach((tooth) => {
-          const idTooth: IdTooth = `${
-            rowIndex + rowIndex + toothsIndex + 1
-          }.${tooth}`;
+          let quadrant;
+          if (rowIndex === 0) { // Верхняя челюсть
+            quadrant = toothsIndex + 1; // Будет 1, затем 2
+          } else { // Нижняя челюсть
+            quadrant = 4 - toothsIndex; // Будет 4, затем 3
+          }
+          const idTooth: IdTooth = `${quadrant}.${tooth}`;
+
           text.push(`<td style="padding: 5px;"">
             <div>
               ${stateMouth[idTooth].top ? '🟩' : '⬜'}
@@ -71,10 +76,9 @@ const formatEmail = (
   </tr>
   <tr>
       <td style="padding: 5px;">${fields.communicationApp.title}</td>
-      <td style="padding: 5px;">${
-        fields.communicationApp.options &&
-        fields.communicationApp.options[rawData.communicationApp]
-      }</td>
+      <td style="padding: 5px;">${fields.communicationApp.options &&
+    fields.communicationApp.options[rawData.communicationApp]
+    }</td>
   </tr>
   <tr>
       <td style="padding: 5px;">${fields.patientName.title}</td>
@@ -83,55 +87,48 @@ const formatEmail = (
   <tr>
       <td style="padding: 5px;">${fields.operationDate.title}</td>
       <td style="padding: 5px;">${new Intl.DateTimeFormat('ru-RU').format(
-        new Date(rawData.operationDate)
-      )}</td>
+      new Date(rawData.operationDate)
+    )}</td>
   </tr>
   <tr>
     <td style="padding: 5px;">${fields.kindOfWork.title}</td>
-    <td style="padding: 5px;">${
-      fields.kindOfWork.options && fields.kindOfWork.options[rawData.kindOfWork]
+    <td style="padding: 5px;">${fields.kindOfWork.options && fields.kindOfWork.options[rawData.kindOfWork]
     }</td>
   </tr>
-  ${
-    rawData.kindOfWork === '0' /* Хирургический набор */
+  ${rawData.kindOfWork === '0' /* Хирургический набор */
       ? `<tr>
       <td style="padding: 5px;">${fields.teethToggle.title}</td>
       <td style="padding: 5px;">${rawData.teethToggle ? 'Да' : 'Нет'}</td>
   </tr>
-  ${
-    rawData.teethToggle /* Коронки */
-      ? `<tr>
+  ${rawData.teethToggle /* Коронки */
+        ? `<tr>
       <td style="padding: 5px;">${fields.toothColor.title}</td>
-      <td style="padding: 5px;">${
-        fields.toothColor.options &&
+      <td style="padding: 5px;">${fields.toothColor.options &&
         fields.toothColor.options[rawData.toothColor]
-      }</td>
+        }</td>
   </tr>
   <tr>
       <td style="padding: 5px;">${fields.prosthesisType.title}</td>
-      <td style="padding: 5px;">${
-        fields.prosthesisType.options &&
+      <td style="padding: 5px;">${fields.prosthesisType.options &&
         fields.prosthesisType.options[rawData.prosthesisType]
-      }</td>
+        }</td>
   </tr>
   <tr>
       <td style="padding: 5px;">${fields.reinforcementToggle.title}</td>
-      <td style="padding: 5px;">${
-        rawData.reinforcementToggle ? 'Да' : 'Нет'
-      }</td>
+      <td style="padding: 5px;">${rawData.reinforcementToggle ? 'Да' : 'Нет'
+        }</td>
   </tr>
   `
-      : ''
-  }
+        : ''
+      }
   <tr>
       <td style="padding: 5px;">${fields.implantSystem.title}</td>
       <td style="padding: 5px;">${rawData.implantSystem}</td>
   </tr>
   <tr>
       <td style="padding: 5px;">${fields.implantProtocol.title}</td>
-      <td style="padding: 5px;">${
-        fields.implantProtocol.options &&
-        fields.implantProtocol.options[rawData.implantProtocol]
+      <td style="padding: 5px;">${fields.implantProtocol.options &&
+      fields.implantProtocol.options[rawData.implantProtocol]
       }</td>
   </tr>
   <tr>
@@ -148,28 +145,24 @@ const formatEmail = (
   </tr>
   <tr>
       <td style="padding: 5px;">${fields.surgkitRentalToggle.title}</td>
-      <td style="padding: 5px;">${
-        rawData.surgkitRentalToggle ? 'Да' : 'Нет'
+      <td style="padding: 5px;">${rawData.surgkitRentalToggle ? 'Да' : 'Нет'
       }</td>
   </tr>
-  ${
-    rawData.surgkitRentalToggle
-      ? `
+  ${rawData.surgkitRentalToggle
+        ? `
     <tr>
       <td style="padding: 5px;">${fields.implantGuides.title}</td>
-      <td style="padding: 5px;">${
-        fields.implantGuides.options &&
+      <td style="padding: 5px;">${fields.implantGuides.options &&
         fields.implantGuides.options[rawData.implantGuides]
-      }</td>
+        }</td>
   </tr>
   `
-      : ''
-  }
+        : ''
+      }
   <tr>
       <td style="padding: 5px;">${fields.sourceFiles.title}</td>
-      <td style="padding: 5px;">${
-        fields.sourceFiles.options &&
-        fields.sourceFiles.options[rawData.sourceFiles]
+      <td style="padding: 5px;">${fields.sourceFiles.options &&
+      fields.sourceFiles.options[rawData.sourceFiles]
       }</td>
   </tr>
   <tr>
@@ -177,21 +170,20 @@ const formatEmail = (
       <td style="padding: 5px;">${rawData.sourceFilesLink}</td>
   </tr>`
       : ''
-  }
+    }
   <tr>
       <td style="padding: 5px;">${fields.comment.title}</td>
       <td style="padding: 5px;">${rawData.comment}</td>
   </tr>
   <tr >
       <td colspan="2">
-          ${
-            rawData.kindOfWork === '0' /* Хирургический набор */
-              ? `<div>${fields.teethGrid.title}</div>${textGridMouth(
-                  gridMouth,
-                  rawData.teethGrid
-                )}`
-              : ''
-          }
+          ${rawData.kindOfWork === '0' /* Хирургический набор */
+      ? `<div>${fields.teethGrid.title}</div>${textGridMouth(
+        gridMouth,
+        rawData.teethGrid
+      )}`
+      : ''
+    }
       </td>
   </tr>
   </table>

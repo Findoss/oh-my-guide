@@ -105,9 +105,15 @@ export const TeethGrid = ({
           {row.map((tooths, toothsIndex) => (
             <div key={toothsIndex} className="flex flex-row gap-1.5">
               {tooths.map((tooth) => {
-                const idTooth: IdTooth = `${
-                  rowIndex + rowIndex + toothsIndex + 1
-                }.${tooth}`;
+                // Определяем квадрант челюсти
+                let quadrant;
+                if (rowIndex === 0) { // Верхняя челюсть
+                  quadrant = toothsIndex + 1; // Будет 1, затем 2
+                } else { // Нижняя челюсть
+                  quadrant = 4 - toothsIndex; // Будет 4, затем 3
+                }
+
+                const idTooth: IdTooth = `${quadrant}.${tooth}`;
 
                 return (
                   <Tooth
