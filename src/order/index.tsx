@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Text, Select, DatePicker, Checkbox, TextArea } from './Inputs';
 import { TeethGrid } from './TeethGrid';
 import { ModalSuccess } from './ModalSuccess';
-import { ModalImplantNavigator } from './ModalImplantNavigator';
 import { ModalTermsOfService } from './ModalTermsOfService';
 
 import {
@@ -18,10 +17,10 @@ import {
   parts,
   restListFieldsKindOfWork,
   restListFieldsSourceFiles,
-  restListFieldsSurgkitRentalToggle,
   restListFieldsTeethToggle,
   submitTitle,
   subtitle,
+  textSending,
   textError,
   textSuccess,
   title,
@@ -38,23 +37,25 @@ export const OrderForm = () => {
     // @ts-expect-error
     resolver: yupResolver(validationSchema),
   });
-  const [showModalSuccess, toggleModalSuccess] = useState(false);
-  const [showModalImplantNavigator, toggleModalModalImplantNavigator] =
-    useState(false);
+  const [showModalSuccess, toggleModalSuccess] = useState(true);
   const [showModalTermsOfService, toggleModalModalTermsOfService] =
     useState(false);
   const [textSendForm, setTextSendForm] = useState('');
+  const [statusSendForm, setStatusSendForm] = useState<'load' | 'read'>('load');
 
   const kindOfWork = watch(fields.kindOfWork.name);
   const teethToggle = watch(fields.teethToggle.name);
-  const surgkitRentalToggle = watch(fields.surgkitRentalToggle.name);
   const sourceFiles = watch(fields.sourceFiles.name);
 
+  const [isBlockButtonSend, setBlockButtonSend] = useState(false);
+
   const onChangeModalSuccess = () => toggleModalSuccess((v) => !v);
-  const onChangeModalImplantNavigator = () =>
-    toggleModalModalImplantNavigator((v) => !v);
+
   const onChangeModalTermsOfService = () =>
     toggleModalModalTermsOfService((v) => !v);
+
+  const blockButtonSend = (v: boolean) =>
+    setBlockButtonSend(v);
 
   useEffect(() => {
     restListFieldsKindOfWork.map((field) => {
@@ -69,12 +70,6 @@ export const OrderForm = () => {
   }, [resetField, sourceFiles]);
 
   useEffect(() => {
-    restListFieldsSurgkitRentalToggle.map((field) => {
-      resetField(field);
-    });
-  }, [resetField, surgkitRentalToggle]);
-
-  useEffect(() => {
     restListFieldsTeethToggle.map((field) => {
       resetField(field);
     });
@@ -82,17 +77,24 @@ export const OrderForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
+
+    blockButtonSend(true);
+    onChangeModalSuccess();
+    setTextSendForm(textSending);
+    setStatusSendForm('load');
+
     sendForm(data)
       .then((data) => {
         if (data.status === 200) {
           setTextSendForm(textSuccess);
-          onChangeModalSuccess();
         }
       })
       .catch((error) => {
         setTextSendForm(`${textError} - ${error}`);
-        onChangeModalSuccess();
-      });
+      }).finally(() => {
+        blockButtonSend(false);
+        setStatusSendForm('read');
+      })
   };
 
   return (
@@ -100,11 +102,8 @@ export const OrderForm = () => {
       <ModalSuccess
         text={textSendForm}
         isShow={showModalSuccess}
+        status={statusSendForm}
         onChange={onChangeModalSuccess}
-      />
-      <ModalImplantNavigator
-        isShow={showModalImplantNavigator}
-        onChange={onChangeModalImplantNavigator}
       />
       <ModalTermsOfService
         isShow={showModalTermsOfService}
@@ -192,28 +191,6 @@ export const OrderForm = () => {
                 <Text control={control} name={fields.pinSystem.name} />
                 <Checkbox control={control} name={fields.sleeveToggle.name} />
               </div>
-
-              <div className="mb-5">
-                <Checkbox
-                  control={control}
-                  name={fields.surgkitRentalToggle.name}
-                />
-                <p className="text-gray-500 text-sm">
-                  Мы предоставляем в аренду универсальный{' '}
-                  <span
-                    onClick={onChangeModalImplantNavigator}
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    хирургический набор
-                  </span>
-                </p>
-              </div>
-
-              {Boolean(surgkitRentalToggle) && (
-                <div className="grid md:grid-cols-2 md:gap-6">
-                  <Select control={control} name={fields.implantGuides.name} />
-                </div>
-              )}
             </div>
 
             <div className="block p-4 mb-2 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 ">
@@ -243,6 +220,7 @@ export const OrderForm = () => {
         <div className="flex justify-center">
           <button
             type="submit"
+            disabled={isBlockButtonSend}
             className='w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800"'
           >
             {submitTitle}
