@@ -37,7 +37,7 @@ export const OrderForm = () => {
     // @ts-expect-error
     resolver: yupResolver(validationSchema),
   });
-  const [showModalSuccess, toggleModalSuccess] = useState(true);
+  const [showModalSuccess, toggleModalSuccess] = useState(false);
   const [showModalTermsOfService, toggleModalModalTermsOfService] =
     useState(false);
   const [textSendForm, setTextSendForm] = useState('');
