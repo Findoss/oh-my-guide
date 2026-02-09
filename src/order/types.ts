@@ -13,8 +13,6 @@ export type FormValues = {
   surgicalKit: string;
   pinSystem: string;
   sleeveToggle: boolean;
-  surgkitRentalToggle: boolean;
-  implantGuides: string;
   sourceFiles: string;
   comment: string;
   sourceFilesLink: string;

@@ -16,6 +16,7 @@ export const title = 'Заказ-наряд';
 export const subtitle = 'Навигационный хирургический шаблон';
 export const submitTitle = 'Отправить';
 
+export const textSending = 'Отправляем письмо';
 export const textSuccess = 'Форма успешно отправлена';
 export const textError = 'Ошибка';
 
@@ -147,22 +148,6 @@ export const fields: FieldsData = {
     name: 'sleeveToggle',
     title: 'Укомплектовать втулками',
   },
-  surgkitRentalToggle: {
-    name: 'surgkitRentalToggle',
-    title: 'Аренда хирургического набора',
-  },
-  implantGuides: {
-    name: 'implantGuides',
-    title: 'Имплантоводы',
-    placeholder: 'Выберите имплантоводы',
-    options: {
-      '0': 'Dentium',
-      '1': 'Strauman BLT',
-      '2': 'Neodent',
-      '3': 'Osstemv',
-      '4': 'Astra tx 3.5',
-    },
-  },
   sourceFiles: {
     name: 'sourceFiles',
     title: 'КЛКТ и сканы отправлены',
@@ -229,8 +214,6 @@ export const defaultValueFields: FormValues = {
   surgicalKit: '',
   pinSystem: '',
   sleeveToggle: false,
-  surgkitRentalToggle: false,
-  implantGuides: '',
   sourceFiles: '0',
   comment: '',
   sourceFilesLink: '',
@@ -247,8 +230,6 @@ export const restListFieldsKindOfWork: (keyof FormValues)[] = [
   'surgicalKit',
   'pinSystem',
   'sleeveToggle',
-  'surgkitRentalToggle',
-  'implantGuides',
   'sourceFiles',
   'comment',
   'sourceFilesLink',
@@ -262,10 +243,6 @@ export const restListFieldsTeethToggle: (keyof FormValues)[] = [
   'prosthesisType',
   'reinforcementToggle',
   'teethGrid',
-];
-
-export const restListFieldsSurgkitRentalToggle: (keyof FormValues)[] = [
-  'implantGuides',
 ];
 
 export const restListFieldsSourceFiles: (keyof FormValues)[] = [
@@ -352,17 +329,6 @@ export const validationSchema = object().shape({
       if (kindOfWork === '0' /* Хирургический набор */) {
         return schema.required(
           `${fields.implantSystem.title} обязательное поле`
-        );
-      }
-      return schema;
-    }
-  ),
-  implantGuides: string().when(
-    [fields.surgkitRentalToggle.name],
-    ([surgkitRentalToggle], schema) => {
-      if (surgkitRentalToggle) {
-        return schema.required(
-          `${fields.implantGuides.title} обязательное поле`
         );
       }
       return schema;

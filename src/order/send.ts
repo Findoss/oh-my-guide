@@ -117,8 +117,7 @@ const formatEmail = (
       <td style="padding: 5px;">${fields.reinforcementToggle.title}</td>
       <td style="padding: 5px;">${rawData.reinforcementToggle ? 'Да' : 'Нет'
         }</td>
-  </tr>
-  `
+  </tr>`
         : ''
       }
   <tr>
@@ -143,22 +142,6 @@ const formatEmail = (
       <td style="padding: 5px;">${fields.sleeveToggle.title}</td>
       <td style="padding: 5px;">${rawData.sleeveToggle ? 'Да' : 'Нет'}</td>
   </tr>
-  <tr>
-      <td style="padding: 5px;">${fields.surgkitRentalToggle.title}</td>
-      <td style="padding: 5px;">${rawData.surgkitRentalToggle ? 'Да' : 'Нет'
-      }</td>
-  </tr>
-  ${rawData.surgkitRentalToggle
-        ? `
-    <tr>
-      <td style="padding: 5px;">${fields.implantGuides.title}</td>
-      <td style="padding: 5px;">${fields.implantGuides.options &&
-        fields.implantGuides.options[rawData.implantGuides]
-        }</td>
-  </tr>
-  `
-        : ''
-      }
   <tr>
       <td style="padding: 5px;">${fields.sourceFiles.title}</td>
       <td style="padding: 5px;">${fields.sourceFiles.options &&
